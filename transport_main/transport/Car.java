@@ -259,7 +259,7 @@ public class Car extends Transport {
 
         @Override
         public String toString() {
-            return String.format("\nСтраховка выдана на %d месяцев\nСтоимость страховки: %.2f рублей\nНомер страховки: %s\n\n",
+            return String.format("\nСтраховка выдана на %d месяцев\nСтоимость страховки: %.2f рублей\nНомер страховки: %s\n",
                     validityPeriodInMonth, insurancePriceForOneMonth, insuranceID);
         }
     }

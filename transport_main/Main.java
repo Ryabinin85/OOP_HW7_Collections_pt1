@@ -11,16 +11,19 @@ import transport_main.serviceStation.ServiceStation;
 import transport_main.transport.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws DiagnosticFailedException {
-        List<Car> cars = new ArrayList<>();
-        List<Driver> drivers = new ArrayList<>();
-        List<Mechanic> mechanics = new ArrayList<>();
-        List<Sponsor> sponsors = new ArrayList<>();
+        Set<Car> cars = new HashSet<>();
+        Set<Driver> drivers = new HashSet<>();
+        Set<Mechanic> mechanics = new HashSet<>();
+        Set<Sponsor> sponsors = new HashSet<>();
 
         PassengerCar pajero = new PassengerCar("Mitsubishi", "Pajero", 3.2, PassengerCar.CarBodyType.JEEP);
+        PassengerCar pajero2 = new PassengerCar("Mitsubishi", "Pajero", 3.2, PassengerCar.CarBodyType.JEEP);
         PassengerCar pathfinder = new PassengerCar("Nissan", "Pathfinder", 3.0, PassengerCar.CarBodyType.JEEP);
         PassengerCar outlander = new PassengerCar("Mitsubishi", "Outlander", 3.0, PassengerCar.CarBodyType.CROSSOVER);
         PassengerCar xTrail = new PassengerCar("Nissan", "X-Trail", 2.4, PassengerCar.CarBodyType.CROSSOVER);
@@ -36,8 +39,10 @@ public class Main {
         Truck volvoFh16 = new Truck("Volvo", "FH16", 16, Truck.Tonnage.N3);
 
         cars.add(pajero);
+        cars.add(pajero2);
         cars.add(pathfinder);
         cars.add(outlander);
+        cars.add(xTrail);
         cars.add(nefaz5299);
         cars.add(maz206);
         cars.add(gazeleCity);
@@ -48,41 +53,44 @@ public class Main {
         cars.add(volvoFh16);
 
         PassengerCarDriver<PassengerCar> hakkinen = new PassengerCarDriver<>("Hakkinen", true, 25);
+        PassengerCarDriver<PassengerCar> hakkinen2 = new PassengerCarDriver<>("Hakkinen", true, 25);
         BusDriver<Bus> hamilton = new BusDriver<>("Hamilton", true, 18);
         TruckDriver<Truck> schumacher = new TruckDriver<>("Schumacher", true, 36);
         drivers.add(hakkinen);
+        drivers.add(hakkinen2);
         drivers.add(hamilton);
         drivers.add(schumacher);
-
-//        pajero.printType();
-//        gazeleCity.printType();
-//        valdaiNext.printType();
-//
-//        pajero.passDiagnostics(hakkinen);
-//        gazeleCity.passDiagnostics(hamilton);
-//        valdaiNext.passDiagnostics(schumacher);
 
         Mechanic<PassengerCar> ivanich = new Mechanic<PassengerCar>("Ivanych", "CTO", TransportType.PASSENGER_CAR);
         Mechanic<Bus> mikhalich = new Mechanic<Bus>("Mikhalych", "CTO", TransportType.BUS);
         Mechanic<Car> petrovich = new Mechanic<Car>("Petrovich", "CTO");
+        Mechanic<Car> petrovich2 = new Mechanic<Car>("Petrovich", "CTO");
         Sponsor<Truck> nike = new Sponsor<Truck>("Nike", 500);
         Sponsor<Bus> reebok = new Sponsor<Bus>("Reebok", 300);
         Sponsor<PassengerCar> adidas = new Sponsor<PassengerCar>("Adidas", 1000);
+        Sponsor<PassengerCar> adidas2 = new Sponsor<PassengerCar>("Adidas", 1000);
 
         mechanics.add(ivanich);
         mechanics.add(mikhalich);
         mechanics.add(petrovich);
+        mechanics.add(petrovich2);
 
         sponsors.add(nike);
         sponsors.add(reebok);
         sponsors.add(adidas);
+        sponsors.add(adidas2);
 
-        for (Car car : cars) {
-            ServiceStation.addCarToQueue(car);
-        }
-        for (Car car : cars) {
-            System.out.println(car);
-            ServiceStation.maintenance();
-        }
+//        for (Car car : cars) {
+//            ServiceStation.addCarToQueue(car);
+//        }
+//        for (Car car : cars) {
+//            System.out.println(car);
+//            ServiceStation.maintenance();
+//        }
+
+        for (Car car : cars) System.out.println(car);
+        for (Driver driver : drivers) System.out.println(driver);
+        for (Mechanic mechanic : mechanics) System.out.println(mechanic);
+        for (Sponsor sponsor : sponsors) System.out.println(sponsor);
     }
 }
